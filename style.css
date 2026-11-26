@@ -1,0 +1,721 @@
+/*
+ * 「かさねん・つよいん・きどりん」共通スタイル
+ * Copyright (c) 2026 Hiroyuki Muramatsu / Shinshu-u
+ * https://gijyutu.com/main/
+ * Released under the MIT License
+ */
+
+body {
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    padding: 2em;
+    background: linear-gradient(160deg,#fff0f6,#f3f0ff);
+    color: #5b4b56;
+    text-align: center;
+}
+
+#stl-input {
+    margin-bottom: 20px;
+}
+
+#svg-container {
+width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    border: 2px dashed #ffc2d9;
+    background-color: #fff;
+    min-height: 400px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em;
+    box-shadow: 0 4px 14px rgba(255,140,180,0.18);
+    margin-bottom: 20px;
+    overflow: auto;
+    align-items: flex-start;
+    touch-action: none; /* タッチ操作をJS側で完全制御し、スクロール介入を防ぐ */
+}
+
+
+svg {
+    /* 原寸表示のため、CSSで引き伸ばさない（スクロールで閲覧） */
+    width: auto;
+    height: auto;
+}
+
+
+#settings-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #ffe0ec;
+    box-shadow: 0 2px 10px rgba(255,140,180,0.14);
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-group label {
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #6b5866;
+}
+
+.input-group input {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ffd6e8;
+    border-radius: 12px;
+}
+
+.input-group select {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ffd6e8;
+    border-radius: 12px;
+}
+
+#settings-panel button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #ff5c8a;
+    color: white;
+    border-radius: 999px;
+    cursor: pointer;
+    align-self: center;
+    font-weight: 700;
+}
+
+#settings-panel button:hover {
+    background-color: #e8477a;
+}
+
+.board-rect {
+    /* fill is set via SVG pattern in script.js */
+    stroke: #c9a8c2;
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+    vector-effect: non-scaling-stroke;
+}
+
+@media print {
+    body { padding: 0; }
+    #settings-panel, #stl-input, h1, p { display: none; }
+    #svg-container { border: none; box-shadow: none; width: auto; max-width: none; }
+}
+
+
+g[data-x] { cursor: grab; }
+svg, #svg-container { user-select: none; }
+
+
+#zoom-controls { margin-bottom: 20px; }
+#zoom-controls button { padding: 6px 12px; margin: 0 6px; }
+svg { transform-origin: 0 0; }
+
+
+.button-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:10px;}
+#extra-boards{margin-top:10px;}
+.board-settings {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+
+#top-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+#zoom-controls button {
+  margin: 0 2px;
+}
+
+#extra-boards { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+
+#help-text{ margin-left:12px; font-size:12px; color:#ff5c8a; font-weight:700; white-space:nowrap; }
+
+
+.input-inline{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;}
+.input-inline button{align-self:center !important;}
+
+
+.layout-buttons{display:flex;flex-direction:row;gap:8px;align-items:flex-end;flex-wrap:wrap;}
+.input-inline{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;}
+
+
+#title-row{display:flex;justify-content:center;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+#title-row h1, #title-row p{margin:0;}
+
+
+.doc-title{margin:6px 0 10px 0;}
+.board-info{margin:10px 0; font-size:14px; line-height:1.5;}
+.board-info .board-row{margin:4px 0;}
+
+
+/* Shown only in PDF window */
+.pdf-only{display:none;}
+
+
+.help-btn{margin-left:8px; padding:4px 10px; font-size:14px; cursor:pointer;}
+
+
+/* ===== ヘッダー：アイコン＋タイトル（レイアウト用） ===== */
+#title-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.app-icon{width:110px;height:110px;object-fit:contain;border-radius:16px;}
+.title-text{display:flex;flex-direction:column;gap:4px;}
+@media (max-width: 640px){.app-icon{width:84px;height:84px;}}
+
+#settings-panel{margin-bottom:20px;}
+
+#svg-container{margin-bottom:20px;}
+
+#learning-panels{margin-top:0;display:flex;flex-direction:row;gap:14px;align-items:stretch;flex-wrap:wrap;}
+
+.info-card{background:#fff;border-radius:18px;padding:14px 16px;border:1px solid #ffe0ec;box-shadow:0 2px 10px rgba(255,140,180,0.15);text-align:left;flex:1 1 280px;min-width:280px;}
+.info-card h2{font-size:16px;margin:0 0 10px 0;}
+.info-body{font-size:14px;line-height:1.6;}
+.info-body .sub{font-size:12px;color:#7a6570;}
+.info-body ul{margin:8px 0 0 20px;padding:0;}
+.info-body li{margin:4px 0;}
+.warning-text{color:#d6336c;font-weight:700;}
+.ok-text{color:#3aa876;font-weight:700;}
+.yield-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed #ffe1ec;padding:4px 0;}
+.yield-row:last-child{border-bottom:none;}
+.yield-rate{font-weight:700;}
+.bom-list{display:flex;flex-direction:column;gap:8px;}
+.bom-item{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed #ffe1ec;}
+.bom-item:last-child{border-bottom:none;}
+.color-chip{width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,0.2);flex:0 0 auto;}
+.bom-meta{display:flex;flex-direction:column;gap:2px;}
+.bom-name{font-weight:700;}
+.bom-count{font-size:12px;color:#7a6570;}
+
+.board-settings{justify-content:flex-start;flex-wrap:wrap;}
+
+.part-no-badge{pointer-events:none;}
+.part-no-circle{stroke:#6b5a66;stroke-width:0.8;vector-effect:non-scaling-stroke;}
+.part-no-text{font-size:10px;font-weight:700;fill:#4a3b47;pointer-events:none;}
+.part-dim-text{font-size:10px;fill:#4a3b47;stroke:none;pointer-events:none;}
+.part-grain-tag,.part-board-warning-tag{font-size:10px;fill:#d6336c;font-weight:700;pointer-events:none;display:none;}
+.grain-warning .part-outline,.board-fit-warning .part-outline{stroke:#d6336c;stroke-width:0.9;}
+.grain-warning .part-dim-text,.board-fit-warning .part-dim-text{fill:#d6336c;font-weight:700;}
+.grain-warning .part-grain-tag{display:block;}
+.board-fit-warning .part-board-warning-tag{display:block;}
+.grain-warning .part-no-circle,.board-fit-warning .part-no-circle{stroke:#d6336c;stroke-width:1.2;}
+.bom-table{width:100%;border-collapse:collapse;font-size:13px;}
+.bom-table th,.bom-table td{border:1px solid #ffd6e8;padding:6px 8px;text-align:left;vertical-align:middle;}
+.bom-table th{background:#fff0f5;}
+.bom-table .count-cell{text-align:center;width:70px;}
+.bom-table .chip-cell{width:28px;}
+
+@media (max-width: 960px){
+  #learning-panels{flex-direction:column;}
+  .info-card{min-width:0;}
+}
+
+/* Finger joint settings */
+.finger-settings{gap:14px;}
+.fj-btn{background-color:#ff9142 !important;font-weight:700;}
+.fj-btn:hover{background-color:#f0782a !important;}
+.joint-finger{stroke:#333;stroke-width:0.5;vector-effect:non-scaling-stroke;}
+.joint-slot{fill:#fff;stroke:#d6336c;stroke-width:0.5;stroke-dasharray:2,2;vector-effect:non-scaling-stroke;}
+.joint-info-card{background:#fff4e0;}
+
+
+/* ===== GIGA端末・小画面向けレスポンシブ表示 ===== */
+/*
+ * 設計基準: 1366×768 でスクロールなし表示
+ * 各ブロックの高さ概算（px）:
+ *   body padding T+B : 16
+ *   #title-row       : ~62   (アイコン52px + gap)
+ *   #top-controls    : ~50   (ファイル選択+ズーム行)
+ *   #settings-panel  : ~62   (入力+ボタン行 + padding)
+ *   #svg-container   : 残り (clamp で動的)
+ *   #learning-panels : ~110  (3カラム固定高)
+ * 合計固定部: ~300px → SVG に ~468px 割り当て可能
+ */
+
+html { height: 100%; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  overflow-y: auto; /* はみ出し時はスクロール可能に */
+  padding: 8px 12px;
+}
+
+/* --- タイトル行 --- */
+#title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-bottom: 5px;
+}
+#title-row h1 {
+  font-size: clamp(15px, 1.55vw, 22px);
+  margin: 0;
+  white-space: nowrap;
+}
+#title-row p {
+  font-size: clamp(11px, 1.05vw, 14px);
+  margin: 0;
+}
+.app-icon {
+  width: clamp(44px, 5vw, 64px);
+  height: clamp(44px, 5vw, 64px);
+  flex-shrink: 0;
+}
+.title-text { gap: 2px; }
+
+/* --- ファイル選択 + ズームコントロール行 --- */
+#top-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+  margin-bottom: 5px;
+}
+#stl-input {
+  margin-bottom: 0;
+  max-width: 230px;
+  font-size: 13px;
+}
+#zoom-controls {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+#zoom-controls button {
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 13px;
+}
+.help-btn {
+  padding: 5px 10px;
+  margin-left: 2px;
+  font-size: 13px;
+}
+#help-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff5c8a;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+
+/* --- 設定パネル --- */
+#settings-panel {
+  padding: 6px 10px;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+.board-settings {
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+}
+.input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b5a66;
+}
+.input-group input,
+.input-group select {
+  width: 82px;
+  padding: 4px 5px;
+  font-size: 13px;
+}
+#settings-panel button {
+  padding: 6px 11px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.layout-buttons { gap: 5px; flex-wrap: nowrap; }
+
+/* --- SVG 描画エリア --- */
+#svg-container {
+  min-height: 0;
+  /* 768px画面: 768 - 8(pad-t) - 62(title) - 50(top-ctrl) - 62(settings) - 8(pad-b) - 110(learning) - 10(gaps) = 458px */
+  height: clamp(200px, calc(100vh - 300px), 520px);
+  padding: 5px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  align-items: flex-start;
+}
+#svg-container svg { flex: 0 0 auto; }
+
+/* --- 学習支援パネル（3カラムグリッド） --- */
+#learning-panels {
+  gap: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0;
+}
+.info-card {
+  min-width: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  max-height: 108px;
+  overflow: auto;
+}
+.info-card h2 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.info-body {
+  font-size: 12px;
+  line-height: 1.4;
+}
+.info-body .sub, .bom-count { font-size: 10px; }
+.bom-item { padding: 2px 0; gap: 5px; }
+.yield-row { padding: 2px 0; gap: 5px; }
+
+/* --- 900px以下：学習パネルを縦積み --- */
+@media (max-width: 900px) {
+  .board-settings { flex-wrap: wrap; }
+  #learning-panels { grid-template-columns: 1fr; }
+  .info-card { max-height: 72px; }
+  #svg-container { height: clamp(180px, calc(100vh - 420px), 360px); }
+}
+
+/* --- スマートフォン（480px以下） --- */
+@media (max-width: 480px) {
+  body { padding: 6px 8px; }
+  #title-row { gap: 8px; }
+  #title-row h1 { font-size: 14px; white-space: normal; }
+  .app-icon { width: 36px; height: 36px; }
+  #top-controls { gap: 4px; flex-wrap: wrap; justify-content: flex-start; }
+  #stl-input { max-width: 100%; font-size: 12px; }
+  #zoom-controls { flex-wrap: wrap; }
+  #help-text { display: none; }
+  #settings-panel { padding: 6px 8px; }
+  .board-settings { gap: 6px; flex-wrap: wrap; }
+  .layout-buttons { flex-wrap: wrap !important; gap: 4px; }
+  .input-group input, .input-group select { width: 70px; font-size: 12px; }
+  #settings-panel button { padding: 6px 8px; font-size: 12px; min-height: 38px; }
+  #svg-container { height: clamp(160px, calc(100vh - 340px), 300px); padding: 4px; }
+  #learning-panels { grid-template-columns: 1fr; gap: 4px; }
+  .info-card { max-height: 80px; padding: 6px 8px; }
+  .info-card h2 { font-size: 12px; }
+  .info-body { font-size: 11px; }
+}
+
+/* --- iPad / タッチデバイス共通 --- */
+#settings-panel button,
+.layout-buttons button,
+.help-btn,
+#zoom-controls button {
+  min-height: 38px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- 高さ720px以下：さらにコンパクト --- */
+@media (max-height: 720px) {
+  .app-icon { width: 40px; height: 40px; }
+  #title-row p { display: none; }
+  #settings-panel { padding: 4px 8px; gap: 4px; }
+  #svg-container { height: clamp(180px, calc(100vh - 280px), 400px); }
+  .info-card { max-height: 90px; }
+}
+
+/* ===== ボタン色バリエーション ===== */
+.btn-blue {
+    background-color: #4da3ff !important;
+    color: #fff !important;
+}
+.btn-blue:hover { background-color: #2e86e0 !important; }
+
+.btn-green {
+    background-color: #3ecf8e !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+.btn-green:hover { background-color: #23b374 !important; }
+
+.btn-gray {
+    background-color: #b39aa8 !important;
+    color: #fff !important;
+}
+.btn-gray:hover { background-color: #9a8190 !important; }
+
+.help-btn.btn-blue {
+    background-color: #4da3ff !important;
+    color: #fff !important;
+}
+.help-btn.btn-blue:hover { background-color: #2e86e0 !important; }
+
+/* ===== 簡易強度判定＋3Dアニメーション ===== */
+.strength-card{background:#fff0e6;}
+.strength-controls{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:6px;}
+.strength-controls label{font-size:11px;display:flex;align-items:center;gap:4px;white-space:nowrap;}
+.strength-controls input{width:52px;padding:3px 4px;font-size:12px;}
+.strength-controls select{width:96px;padding:3px 4px;font-size:12px;}
+.btn-orange{background-color:#ff9142 !important;color:#fff !important;font-weight:700 !important;}
+.btn-orange:hover{background-color:#f0782a !important;}
+.btn-purple{background-color:#a86ee8 !important;color:#fff !important;font-weight:700 !important;}
+.btn-purple:hover{background-color:#8f52d1 !important;}
+.strength-summary{font-size:12px;margin-bottom:4px;}
+.strength-table{width:100%;border-collapse:collapse;font-size:11px;line-height:1.25;}
+.strength-table th,.strength-table td{border:1px solid #f5ddc8;padding:3px 4px;text-align:left;vertical-align:middle;white-space:nowrap;}
+.strength-table th{background:#ffe9d6;font-weight:700;}
+.strength-row-safe td:nth-child(2){color:#3aa876;font-weight:700;}
+.strength-row-caution td:nth-child(2){color:#e8923f;font-weight:700;}
+.strength-row-danger td:nth-child(2){color:#e0546e;font-weight:700;}
+.strength-overlay{opacity:.22;stroke-width:0;}
+.strength-overlay.strength-safe{fill:#6fe0a8;}
+.strength-overlay.strength-caution{fill:#ffc16b;}
+.strength-overlay.strength-danger{fill:#f2708a;}
+.strength-risk-tag{font-size:10px;font-weight:800;paint-order:stroke;stroke:#fff;stroke-width:2.2px;stroke-linejoin:round;}
+.strength-risk-tag.strength-safe{fill:#3aa876;}
+.strength-risk-tag.strength-caution{fill:#e8923f;}
+.strength-risk-tag.strength-danger{fill:#e0546e;}
+g.strength-caution .part-outline{stroke:#ffab5e;stroke-width:1.2;}
+g.strength-danger .part-outline{stroke:#f2708a;stroke-width:1.4;}
+@media (min-width: 901px){#learning-panels{grid-template-columns:repeat(4,minmax(0,1fr));}.info-card{max-height:126px;}}
+@media (max-height: 720px) and (min-width:901px){.info-card{max-height:100px;}.strength-table{font-size:10px}.strength-controls label{font-size:10px}.strength-controls input{width:46px}}
+
+/* ===== Ver 2.0 簡易梁解析表示 ===== */
+.strength-controls select#support-condition{width:138px;}
+.strength-table th,.strength-table td{font-size:10.5px;padding:3px 3px;}
+.strength-table td:nth-child(4),.strength-table td:nth-child(5),.strength-table td:nth-child(6){text-align:right;font-variant-numeric:tabular-nums;}
+@media (max-height: 760px) and (min-width:901px){.strength-table th:nth-child(3),.strength-table td:nth-child(3){display:none}}
+@media (min-width: 1180px){
+  #learning-panels{grid-template-columns: 0.9fr 0.9fr 1.35fr 0.9fr;}
+}
+/* ===== Ver 2.1: STL板厚推定UI ===== */
+.strength-controls select#thickness-mode{width:106px;}
+.strength-table .sub{font-size:9px;color:#666;font-weight:400;}
+
+/* ===== Ver 2.2: 梁要素による簡易FEM ===== */
+.strength-controls select#fem-elements{width:62px;}
+.strength-card h2::after{content:"（梁要素）";font-size:10px;color:#666;margin-left:4px;font-weight:400;}
+
+
+/* v2.8: 強度確認ボタン追加後の横崩れ防止 */
+.layout-buttons{flex-wrap:wrap !important;}
+#strength-config-store{display:none !important;}
+@media (max-width: 1100px){
+  #top-controls{flex-wrap:wrap;}
+  .board-settings{flex-wrap:wrap;}
+}
+
+
+/* ===== v2.34 共通初期メニュー（かさねん・つよいん・きどりん） ===== */
+body.menu-page{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:clamp(8px,1.6vh,20px);background:linear-gradient(160deg,#fff0f6,#f3f0ff);color:#5b4b56;text-align:center;
+  overflow:auto;max-height:none;
+}
+.menu-shell{
+  width:min(1180px,97vw);background:#fff;border:1px solid #ffe0ec;border-radius:28px;
+  box-shadow:0 16px 48px rgba(255,140,180,.22);padding:clamp(14px,2.2vh,26px) clamp(16px,2.6vw,30px);
+  max-height:none;overflow:visible;
+}
+.menu-header{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(8px,1.4vh,14px);}
+.menu-header img{width:clamp(54px,8vh,86px);height:clamp(54px,8vh,86px);border-radius:20px;object-fit:contain;}
+.menu-header h1{font-size:clamp(22px,3vw,30px);margin:0;color:#5b4b56;}
+.menu-header p{font-size:clamp(13px,1.5vw,15px);line-height:1.6;color:#6b5866;margin:6px 0 0;}
+.menu-upload{margin:clamp(8px,1.5vh,16px) auto;padding:clamp(10px,1.6vh,16px);width:min(760px,100%);border:2px dashed #ffb3d1;border-radius:16px;background:#fff5fa;}
+.menu-upload label{font-weight:800;color:#ff5c8a;display:block;margin-bottom:8px;font-size:clamp(14px,1.5vw,16px);}
+.menu-upload input{font-size:clamp(14px,1.4vw,16px);max-width:100%;}
+#selectedFileName{font-size:clamp(12px,1.3vw,14px);color:#6b5866;margin-top:8px;line-height:1.6;}
+.app-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch;margin-top:12px;}
+.app-flow-three{grid-template-columns:1fr auto 1fr auto 1fr;gap:clamp(8px,1.2vw,16px);}
+.app-card{
+  border-radius:22px;padding:clamp(14px,2vh,22px) clamp(14px,1.6vw,20px);text-align:left;border:1px solid #f2e4ea;
+  min-height:clamp(140px,22vh,220px);display:flex;flex-direction:column;justify-content:space-between;
+}
+.app-card h2{font-size:clamp(18px,2.2vw,26px);margin:0 0 6px;color:#5b4b56;}
+.app-card .kana{font-size:clamp(14px,1.5vw,16px);font-weight:800;color:#7a6570;margin-bottom:8px;}
+.app-card p{font-size:clamp(13px,1.35vw,15px);line-height:1.65;color:#6b5a66;margin:0 0 14px;}
+.app-card.kasanen{background:linear-gradient(135deg,#eff6ff,#fff);border-color:#bfdbfe;}
+.app-card.tsuyoin{background:linear-gradient(135deg,#fff7ed,#fff);border-color:#fed7aa;}
+.app-card.kidorin{background:linear-gradient(135deg,#ecfdf5,#fff);border-color:#bbf7d0;}
+.app-card button{
+  width:100%;border:none;border-radius:18px;padding:clamp(10px,1.4vh,14px) 14px;color:#fff;font-weight:900;
+  font-size:clamp(15px,1.6vw,18px);cursor:pointer;box-shadow:0 6px 18px rgba(255,140,180,.25);
+  /* iPad / タッチ: 十分なタップ領域 */
+  min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.kasanen button{background:#4da3ff}.kasanen button:hover{background:#2e86e0}
+.tsuyoin button{background:#ff9142}.tsuyoin button:hover{background:#f0782a}
+.kidorin button{background:#3ecf8e}.kidorin button:hover{background:#23b374}
+.flow-arrow{display:flex;align-items:center;justify-content:center;font-size:clamp(28px,4vw,46px);color:#d9a8c2;font-weight:900;}
+.menu-note{font-size:clamp(11px,1.2vw,13px);color:#6b5866;line-height:1.55;margin-top:clamp(8px,1.4vh,16px);text-align:left;background:#fff5fa;border-radius:16px;padding:9px 14px;}
+
+/* --- 初期メニュー：GIGA端末 1366×768 最適化 --- */
+@media(min-width:901px) and (max-height:800px){
+  .app-card{min-height:130px;padding:10px 14px}
+  .app-card p{line-height:1.45;margin-bottom:8px}
+  .app-card button{padding:9px 12px}
+  .menu-upload{padding:8px 12px}
+  .menu-header img{width:56px;height:56px}
+  .menu-note{font-size:11px;padding:6px 12px}
+}
+
+/* --- 初期メニュー：タブレット縦・狭幅 → 縦積み＋スクロール許可 --- */
+@media(max-width:900px){
+  .app-flow-three{grid-template-columns:1fr}
+  .app-flow{grid-template-columns:1fr}
+  .flow-arrow{transform:rotate(90deg);font-size:30px}
+  .menu-shell{padding:16px 14px}
+  body.menu-page{align-items:flex-start}
+}
+/* --- 初期メニュー：スマートフォン --- */
+@media(max-width:480px){
+  .menu-header{gap:10px}
+  .menu-header img{width:48px;height:48px}
+  .menu-header h1{font-size:20px}
+  .app-card{padding:12px 12px;min-height:auto}
+  .app-card button{font-size:15px;padding:12px 10px}
+}
+
+/* ===== 「つよいん」単独ページ（strength.html）：JS側の初期スタイルより背景・文字色を優先して統一 ===== */
+html, body, #app, #root, main, .app-shell {
+  background: linear-gradient(160deg,#fff0f6,#f3f0ff) !important;
+  color: #5b4b56 !important;
+}
+body { font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif !important; }
+
+/* ===== v2.34 3D AR合成ビューア「かさねん」 ===== */
+body.kasanen-page{margin:0;padding:0;overflow:hidden;background:radial-gradient(circle at 50% 30%,#334155 0%,#1e293b 46%,#0f172a 100%) !important;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',system-ui,sans-serif;font-size:14px;color:#f8fafc;width:100%;height:100%;text-align:left;}
+body.kasanen-page #dropZone{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:3px dashed #60a5fa;color:#e0f2fe;background:radial-gradient(circle at 50% 38%,rgba(51,65,85,.92),rgba(15,23,42,.97));font-size:clamp(16px,3.6vw,20px);font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,.55);z-index:9;pointer-events:auto;}
+body.kasanen-page #modelControls{position:absolute;top:54px;left:50%;transform:translateX(-50%);z-index:10;}
+body.kasanen-page #modelControls button{padding:8px 14px;font-size:14px;background:#fff;color:#ff5c8a;border:2px solid #ffb3d9;border-radius:999px;cursor:pointer;min-height:44px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+body.kasanen-page #modelControls button:hover{background:#ff5c8a;color:#fff;}
+body.kasanen-page .app-nav-controls{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;max-width:98vw;background:rgba(255,255,255,.96);border:1px solid #cbd5e1;border-radius:16px;padding:6px 8px;backdrop-filter:blur(6px);}
+body.kasanen-page .app-nav-controls button, body.kasanen-page #bgControls button{
+  padding:7px 11px;font-size:clamp(11px,1.3vw,13px);border-radius:6px;border:1px solid transparent;cursor:pointer;
+  white-space:nowrap;text-align:center;transition:filter .15s,transform .1s;line-height:1.3;
+  min-height:38px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+body.kasanen-page .app-nav-controls button:hover, body.kasanen-page #bgControls button:hover{filter:brightness(1.2);} body.kasanen-page .app-nav-controls button:active, body.kasanen-page #bgControls button:active{transform:scale(.97)}
+body.kasanen-page .app-name-badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:12px;background:#ff5c8a;color:#fff;font-weight:900;font-size:clamp(11px,1.3vw,14px);}
+body.kasanen-page #bgControls{position:absolute;top:54px;left:50%;transform:translateX(-50%);display:none;flex-wrap:wrap;justify-content:center;gap:5px;z-index:10;max-width:98vw;padding:0 4px;}
+body.kasanen-page .btn-default{background:#fff;color:#be185d;border-color:#f9a8d4!important;font-weight:800;box-shadow:0 1px 4px rgba(15,23,42,.18);}body.kasanen-page .btn-accent{background:#ffe600;color:#000;font-weight:bold;}body.kasanen-page .btn-orange{background:#ff9142!important;color:#fff!important;font-weight:bold;}body.kasanen-page .btn-green{background:#3ecf8e!important;color:#fff!important;font-weight:bold;}body.kasanen-page .btn-color{background:linear-gradient(135deg,#dbeafe 0%,#fde68a 40%,#fecdd3 70%,#d1fae5 100%);color:#4a3b47;font-weight:bold;border:2px solid rgba(120,90,105,.25)!important;}
+body.kasanen-page #statsPanel{display:none;position:fixed;top:clamp(88px,13vh,110px);left:50%;transform:translateX(-50%);width:min(92vw,600px);box-sizing:border-box;background:rgba(45,25,40,.92);color:#ffe9f2;font-size:clamp(13px,3.2vw,16px);line-height:1.9;padding:16px 20px;border-radius:10px;white-space:pre-wrap;word-break:break-word;max-height:75vh;overflow-y:auto;z-index:9999;user-select:text;cursor:text;box-shadow:0 4px 24px rgba(0,0,0,.5);}body.kasanen-page #statsPanel::after{content:'（ダブルクリックで閉じる）';display:block;margin-top:10px;font-size:.8em;color:rgba(255,220,235,.55);text-align:right;}
+body.kasanen-page video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;pointer-events:none;}body.kasanen-page canvas{position:absolute;inset:0;width:100%;height:100%;display:none;z-index:5;pointer-events:auto;background:transparent;}
+
+/* v8.6: 共通のピンク背景指定より「かさねん」を優先する */
+html:has(body.kasanen-page){background:#0f172a !important;}
+body.kasanen-page #arCanvas{background:#172033 !important;}
+body.kasanen-page #arCanvas.has-ar-background{background:transparent !important;}
+
+/* v8.5: かさねんの淡色モデルを見やすくする高コントラスト背景 */
+body.kasanen-page::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    linear-gradient(rgba(148,163,184,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,.055) 1px, transparent 1px);
+  background-size:32px 32px;
+}
+body.kasanen-page video{z-index:1;}
+body.kasanen-page canvas{z-index:5;}
+
+/* --- かさねん：iPad横・GIGA端末 --- */
+@media(max-width:768px){
+  body.kasanen-page #bgControls{top:88px}
+  body.kasanen-page #modelControls{top:88px}
+  body.kasanen-page .app-nav-controls{top:4px}
+  .app-name-badge{font-size:12px}
+}
+/* --- かさねん：スマートフォン --- */
+@media(max-width:480px){
+  body.kasanen-page .app-nav-controls{
+    padding:4px 6px;gap:4px;border-radius:12px;
+  }
+  body.kasanen-page .app-nav-controls button{
+    padding:5px 7px;font-size:11px;min-height:34px;
+  }
+  body.kasanen-page #bgControls button{
+    padding:5px 7px;font-size:11px;min-height:34px;
+  }
+  body.kasanen-page #bgControls{top:78px;gap:4px}
+  body.kasanen-page #modelControls{top:78px}
+  body.kasanen-page .app-name-badge{padding:4px 7px;font-size:11px}
+}
+/* --- かさねん：低い画面 --- */
+@media(max-height:520px){
+  body.kasanen-page #bgControls{top:44px}
+  body.kasanen-page #modelControls{top:44px}
+  body.kasanen-page .app-nav-controls button,body.kasanen-page #bgControls button{font-size:11px;padding:4px 7px;min-height:30px}
+  body.kasanen-page .app-name-badge{padding:4px 7px}
+}
+
+
+/* ===== 中学1年生向け「つよいん」 v7.1 ===== */
+.student-simple-panel{background:linear-gradient(135deg,#fff7ed,#fff);color:#4b3a42;border:2px solid #fed7aa;border-radius:16px;padding:12px;margin-bottom:10px;box-shadow:0 8px 22px rgba(249,115,22,.14)}
+.student-simple-panel h2{font-size:18px!important;color:#c2410c;margin:0 0 8px!important}.student-control{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:7px 0;font-size:14px;font-weight:800}.student-control .seg{display:flex;gap:4px;flex:1}.student-control button,.student-control select{min-height:38px;border:1px solid #fdba74;border-radius:10px;background:#fff;color:#5b4b56;font-weight:800;padding:7px 10px}.student-control .seg button{flex:1}.student-control button.active{background:#ff9142;color:#fff;border-color:#f97316}.student-control select{min-width:150px}.student-run{width:100%;min-height:42px;border:0;border-radius:12px;background:#7c3aed;color:#fff;font-size:16px;font-weight:900;cursor:pointer;margin-top:7px}.student-details{margin-top:8px;font-size:12px;color:#6b5866}.student-details summary{cursor:pointer;font-weight:800}.student-result-card,.failure-estimate-card{border-radius:14px;padding:11px 12px;margin-bottom:9px;color:#33262e;font-size:13px;line-height:1.55;background:#ecfdf5;border:2px solid #86efac}.student-result-card.caution{background:#fffbeb;border-color:#fcd34d}.student-result-card.danger{background:#fef2f2;border-color:#fca5a5}.student-result-card>div{margin:3px 0}.student-judge{font-size:19px;font-weight:900}.failure-estimate-card{background:#eff6ff;border-color:#93c5fd}.failure-estimate-card h3{font-size:16px;color:#1d4ed8;margin:0 0 5px}.failure-estimate-card p{color:#475569!important;font-size:11px!important;margin-top:5px!important}.panel>h2:first-of-type{display:none}
+body[data-load-level="light"] #canvas-wrap canvas{filter:saturate(.92)}
+@media(max-height:780px){.student-simple-panel{padding:8px}.student-simple-panel h2{font-size:15px!important}.student-control{margin:4px 0;font-size:12px}.student-control button,.student-control select{min-height:32px;padding:4px 7px}.student-run{min-height:34px;font-size:13px}.student-result-card,.failure-estimate-card{padding:7px 9px;font-size:11px}.student-judge{font-size:15px}}
+@media(max-width:900px){.student-simple-panel{display:grid;grid-template-columns:1fr 1fr;gap:5px}.student-simple-panel h2,.student-run,.student-details{grid-column:1/-1}.student-control{display:block}.student-control .seg{margin-top:4px}.student-result-card,.failure-estimate-card{font-size:12px}}
+
+/* v8.0: 強度確認はスギ相当・16分割に固定し，中学生向けの入力項目を削減 */
+.fixed-param{font-size:11px;line-height:1.5;color:#6b5866;margin:5px 0 7px;}
+
+
+/* ===== v8.2 つよいん：GIGA端末・iPad向け簡潔表示 ===== */
+.student-control.student-weight-control{align-items:flex-start}
+.student-weight-control .seg button{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;min-height:48px;padding:5px 4px}
+.student-weight-control .seg button small{display:block;margin-top:3px;font-size:9px;font-weight:700;white-space:nowrap}
+.student-result-card{text-align:left}
+.student-result-card .student-judge{text-align:center}
+.student-result-card .student-force{text-align:left;font-weight:800;border-bottom:1px dashed rgba(0,0,0,.18);padding-bottom:4px;margin-bottom:5px}
+.student-result-card>div:not(.student-judge){text-align:left}
+.student-report-button{display:block;width:100%;min-height:42px;border:2px solid #93c5fd;border-radius:12px;background:#1d4ed8;color:#fff;font-size:14px;font-weight:900;cursor:pointer;margin:0 0 8px;padding:8px 12px;box-shadow:0 4px 12px rgba(29,78,216,.22)}
+.student-report-button:hover,.student-report-button:focus-visible{background:#1e40af;outline:3px solid rgba(147,197,253,.65);outline-offset:2px}
+@media(max-height:780px){
+  .student-weight-control .seg button{min-height:39px}
+  .student-weight-control .seg button small{font-size:8px}
+  .student-result-card,.failure-estimate-card{margin-bottom:5px}
+  .student-report-button{min-height:36px;margin-bottom:5px;font-size:12px;padding:6px 9px}
+}
+@media(max-width:900px){
+  .student-simple-panel{grid-template-columns:1fr!important}
+  .student-simple-panel h2,.student-run,.student-details{grid-column:1!important}
+  .student-control{display:flex!important}
+  .student-control .seg{margin-top:0!important}
+}
+
+/* v8.2: 判定カードの視認性向上 */
+.student-result-card,.failure-estimate-card{color:#111827!important;background:#ffffff!important;border-color:#64748b!important;box-shadow:0 3px 12px rgba(15,23,42,.16)}
+.student-result-card.safe{background:#ecfdf5!important;border-color:#16a34a!important}.student-result-card.caution{background:#fffbeb!important;border-color:#d97706!important}.student-result-card.danger{background:#fef2f2!important;border-color:#dc2626!important}
+.student-result-card .student-judge{color:#0f172a!important;background:rgba(255,255,255,.78);border-radius:8px;padding:4px 6px}
+.student-result-card b,.failure-estimate-card b{color:#0f172a!important}
+
+/* ===== v2.50 ガイドライン対応：個人情報に関する注意（初期メニュー） ===== */
+.menu-privacy-note{font-size:clamp(11px,1.15vw,12.5px);color:#9a3412;background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:5px 10px;margin-top:8px;line-height:1.5;text-align:left;}
+@media(min-width:901px) and (max-height:800px){.menu-privacy-note{margin-top:5px;padding:4px 8px;font-size:11px}}
+/* つよいん：判定カードの補足 */
+.student-result-card .student-note{font-size:11px;color:#475569;border-top:1px dashed rgba(0,0,0,.18);margin-top:5px;padding-top:4px}
